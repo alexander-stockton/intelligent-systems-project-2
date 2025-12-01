@@ -35,7 +35,7 @@ mother(X, Y) :- female(X),parent(X, Y).
 mother(X, Z) :- female(Z),parent_in_law(X,Z).
 
 % X is the parent-in-law of Y
-parent_in_law(X,Z) :- married(X,Y),parent(Z,Y).
+parent_in_law(X,Z) :- married(Z,Y),child(Y,X).
 
 % X is a grandparent of Z
 grandparent(X, Z) :- parent(X, Y),parent(Y, Z).
@@ -93,4 +93,4 @@ grandkid(X, Y) :- grandparent(Y,X).
 grandson(X, Y) :- male(X),grandchild(X, Y).
 
 % X is the grandson of Y
-granddaugher(X, Y) :- female(X),grandchild(X, Y).
+granddaughter(X, Y) :- female(X),grandchild(X, Y).
