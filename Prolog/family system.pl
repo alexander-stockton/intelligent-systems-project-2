@@ -28,11 +28,11 @@ parent(julia, sophie). parent(patrick, sophie).
 % --- PARENTIAL RULES ---
 % X is the father of Y
 father(X, Y) :- male(X),parent(X, Y).
-father(X, Z) :- male(Z),parent_in_law(X,Z).
+father(X, Z) :- male(X),parent_in_law(X,Z).
 
 % X is the mother of Y
 mother(X, Y) :- female(X),parent(X, Y).
-mother(X, Z) :- female(Z),parent_in_law(X,Z).
+mother(X, Z) :- female(X),parent_in_law(X,Z).
 
 % X is the parent-in-law of Y
 parent_in_law(X,Z) :- married(Z,Y),child(Y,X).
@@ -93,4 +93,4 @@ grandkid(X, Y) :- grandparent(Y,X).
 grandson(X, Y) :- male(X),grandchild(X, Y).
 
 % X is the grandson of Y
-granddaughter(X, Y) :- female(X),grandchild(X, Y).
+granddaugher(X, Y) :- female(X),grandchild(X, Y).
