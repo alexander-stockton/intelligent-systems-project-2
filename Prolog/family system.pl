@@ -28,36 +28,40 @@ parent(julia, sophie). parent(patrick, sophie).
 % --- PARENTIAL RULES ---
 % X is the father of Y
 father(X, Y) :- male(X),parent(X, Y).
-father(X, Z) :- male(X),parent_in_law(X,Z).
+father_in_law(X, Z) :- male(X),parent_in_law(X,Z).
 
 % X is the mother of Y
 mother(X, Y) :- female(X),parent(X, Y).
-mother(X, Z) :- female(X),parent_in_law(X,Z).
+mother_in_law(X, Z) :- female(X),parent_in_law(X,Z).
 
 % X is the parent-in-law of Y
 parent_in_law(X,Z) :- married(Z,Y),child(Y,X).
 
 % X is a grandparent of Z
 grandparent(X, Z) :- parent(X, Y),parent(Y, Z).
+grandmother(X, Y) :- female(X),grandparent(X,Y).
+grandfather(X, Y) :- male(X),grandparent(X,Y).
 
 % X is an uncle of Z
-uncle(X, Z) :- male(X),parent(Y,Z),sibling(X,Y).
+uncle(X, Z) :- male(X),parent(Y, Z),sibling(X, Y).
+uncle(X, Z) :- male(X),parent(Y, Z),sibling_in_law(X, Y).
 
 % X is an aunt of Z
-aunt(X, Z) :- female(X),parent(Y,Z),sibling(X,Y).
+aunt(X, Z) :- female(X),parent(Y, Z),sibling(X, Y).
+aunt(X, Z) :- female(X),parent(Y, Z),sibling_in_law(X, Y).
 
 % --- RELATION RULES ---
 % X is a sibling of Y
 sibling(X, Y) :- parent(Z, X),parent(Z, Y),X \= Y.
-sibling(X, Z) :- married(X,Y),sibling(Y,Z).
+sibling_in_law(X, Z) :- married(X, Y),sibling(Y, Z).
 
 % X is a brother of Y
 brother(X, Y) :- male(X),sibling(X, Y).
-brother(X, Z) :- male(X),sibling(X, Y),married(Y,Z).
+brother(X, Y) :- male(X),sibling_in_law(X, Y).
 
 % X is a sister of Y
 sister(X, Y) :- female(X),sibling(X, Y).
-sister(X, Z) :- female(X),sibling(X, Y),married(Y,Z).
+sister(X, Y) :- female(X),sibling_in_law(X, Y).
 
 % X is a cousin of Y
 cousin(A, E) :- child(A,B),child(E,D),grandparent(C,A),grandparent(C,E),A \= E,B \= D.
