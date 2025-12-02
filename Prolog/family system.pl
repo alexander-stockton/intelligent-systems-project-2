@@ -76,12 +76,14 @@ husband(X, Y) :- male(X),married(X, Y).
 % --- CHILDHOOD RULES ---
 % X is the child of Y
 child(X, Y) :- parent(Y, X).
+child(X, Y) :- son(X, Y).
+child(X, Y) :- daughter(X, Y).
 
 % X is the father of Y
 son(X, Y) :- male(X),child(X, Y).
 
 % X is the mother of Y
-daugher(X, Y) :- female(X),child(X, Y).
+daughter(X, Y) :- female(X),child(X, Y).
 
 % X is a nephew of Z
 nephew(X, Y) :- uncle(Y,X).
@@ -97,4 +99,4 @@ grandkid(X, Y) :- grandparent(Y,X).
 grandson(X, Y) :- male(X),grandchild(X, Y).
 
 % X is the grandson of Y
-granddaugher(X, Y) :- female(X),grandchild(X, Y).
+granddaughter(X, Y) :- female(X),grandchild(X, Y).
