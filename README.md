@@ -48,7 +48,7 @@ CPU Time     : 0.016s
 
 Output explanation: The program solves at first with one option and tries to optimize it to use fewer colors, that is why we see the second answer set. 
 
-# Exequiel AI usage
+### Exequiel AI usage
 
 Asked chatgpt 5.1 to generate the instance.lp as an good example.
 
