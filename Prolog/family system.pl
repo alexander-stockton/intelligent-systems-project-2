@@ -100,3 +100,10 @@ grandson(X, Y) :- male(X),grandchild(X, Y).
 
 % X is the grandson of Y
 granddaughter(X, Y) :- female(X),grandchild(X, Y).
+
+% X is a descendant of Y (Recursive Definition) (ai-generated)
+% Base Case: X is a direct child of Y
+descendant(X, Y) :- child(X, Y).
+
+% Recursive Step: X is a child of Y, and Y is a descendant of Z (X is a grandchild/great-grandchild, etc., of Z)
+descendant(X, Z) :- child(X, Y), descendant(Y, Z).
