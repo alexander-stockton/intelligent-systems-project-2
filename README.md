@@ -1,8 +1,8 @@
-# intelligent-systems-project-2
+Prolog – Family relationship reasoning
 
-LP  – Family relationship reasoning
+Answer Set Programming – Graph Coloring
 
-ASP – Graph Coloring
+Authored by: Alexander Stockton, Exequiel Rodriguez Barri
 
 ### Alex's AI-Usage
 
